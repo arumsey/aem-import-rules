@@ -1,0 +1,26 @@
+{
+  "name": "aem-import-rules",
+  "description": "Library to accelerate your AEM import script development.",
+  "version": "0.0.1",
+  "keywords": [],
+  "author": "arumsey",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arumsey/aem-import-rules.git"
+  },
+  "bugs": {
+    "url": "git@github.com:arumsey/aem-import-rules.git/issues"
+  },
+  "homepage": "https://github.com/arumsey/aem-import-rules#readme",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "typescript": "^5.5.4"
+  }
+}
