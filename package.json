@@ -18,6 +18,7 @@
   "engines": {
     "node": ">=20.8.0"
   },
+  "files": ["dist"],
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --declaration -project tsconfig.build.json",
