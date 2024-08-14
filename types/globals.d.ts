@@ -10,12 +10,13 @@
  * governing permissions and limitations under the License.
  */
 
-import {ImportRules} from '../rulebuilder';
-import {SourceProps} from '../transformfactory';
-import {BlockCellMapping, BlockCells, BlockConfigMapping} from '../cells';
+import {ImportRules} from '../src/rulebuilder';
+import {SourceProps} from '../src/transformfactory';
+import {BlockCellMapping, BlockCells, BlockConfigMapping} from '../src/cells';
 
 declare global {
-  const WebImporter: {
+  // eslint-disable-next-line no-var
+  var WebImporter: {
     Transformer: {
       transform: (rules: ImportRules, source: SourceProps) => Element;
     };

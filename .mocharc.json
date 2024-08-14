@@ -1,0 +1,7 @@
+{
+  "register": ["ts-node/register"],
+  "require": ["./test/fixtures.ts"],
+  "extension": ["ts"],
+  "spec": "test/**/*.test.ts",
+  "loader": "ts-node/esm"
+}

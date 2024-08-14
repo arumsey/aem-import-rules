@@ -12,8 +12,12 @@
 
 import ImportRulesBuilder from './rulebuilder';
 import TransformFactory from './transformfactory';
+import Transformer from './transformer';
+import CellUtils from './cells';
 
 export {
   TransformFactory,
-  ImportRulesBuilder
+  ImportRulesBuilder,
+  Transformer,
+  CellUtils
 }

@@ -257,7 +257,7 @@ export default class CellUtils {
   }
 
   static isBlockConfig(cells: BlockCells): cells is BlockConfig {
-    return typeof cells === 'object' && !Array.isArray(cells);
+    return typeof cells === 'object' && cells !== null && !Array.isArray(cells);
   }
 
   /**
