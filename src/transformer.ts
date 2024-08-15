@@ -11,10 +11,10 @@
  */
 /* global WebImporter */
 
-import parsers, {ParserFn} from './parsers';
-import CellUtils from './cells';
-import {ImportRules} from './rulebuilder';
-import {SourceProps} from './transformfactory';
+import parsers, {ParserFn} from './parsers/index.js';
+import CellUtils from './cells.js';
+import {ImportRules} from './rulebuilder.js';
+import {SourceProps} from './transformfactory.js';
 
 type AttributeSelector = { attribute: string, property: string, value: string };
 

@@ -11,7 +11,7 @@
  */
 
 import { assert } from 'chai';
-import CellUtils, { BlockCells, BlockConfig } from '../src/cells';
+import CellUtils, { BlockCells, BlockConfig } from '../src/cells.js';
 
 describe('CellUtils.isBlockCellArray', () => {
   it('should return true for a valid BlockCellArray', () => {

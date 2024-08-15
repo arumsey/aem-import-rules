@@ -11,8 +11,8 @@
  */
 /* global WebImporter */
 
-import {ParserFn} from './index';
-import {BlockCellMapping, BlockConfigMapping} from '../cells';
+import {ParserFn} from './index.js';
+import {BlockCellMapping, BlockConfigMapping} from '../cells.js';
 
 const parse: ParserFn<{ cells?: string | BlockCellMapping | BlockConfigMapping}> = (element, { params: { cells } }) => {
   let rows: BlockCellMapping | BlockConfigMapping;

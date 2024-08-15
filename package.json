@@ -2,7 +2,11 @@
   "name": "aem-import-rules",
   "description": "Library to accelerate your AEM import script development.",
   "version": "0.0.1",
-  "keywords": ["aem", "import", "edge delivery"],
+  "keywords": [
+    "aem",
+    "import",
+    "edge delivery"
+  ],
   "author": "arumsey",
   "license": "Apache-2.0",
   "repository": {
@@ -18,7 +22,9 @@
   "engines": {
     "node": ">=20.8.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --declaration -project tsconfig.build.json",

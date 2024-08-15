@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import ImportRulesBuilder from './rulebuilder';
-import TransformFactory from './transformfactory';
-import Transformer from './transformer';
-import CellUtils from './cells';
+import ImportRulesBuilder from './rulebuilder.js';
+import TransformFactory from './transformfactory.js';
+import Transformer from './transformer.js';
+import CellUtils from './cells.js';
 
 export {
   TransformFactory,

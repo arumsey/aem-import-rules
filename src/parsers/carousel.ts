@@ -12,8 +12,8 @@
 /* global WebImporter */
 
 import blockParser from './block.js';
-import {ParserFn} from './index';
-import {BlockCellArray, BlockCellMapping} from '../cells';
+import {ParserFn} from './index.js';
+import {BlockCellArray, BlockCellMapping} from '../cells.js';
 
 /**
  * Get the common ancestor of two or more elements

@@ -12,8 +12,8 @@
 /* global WebImporter */
 
 import blockParser from './block.js';
-import {ParserFn} from './index';
-import {BlockConfig, BlockConfigMapping} from '../cells';
+import {ParserFn} from './index.js'
+import {BlockConfig, BlockConfigMapping} from '../cells.js';
 
 function isDate(str: unknown): str is string {
   if (typeof str !== 'string') return false;

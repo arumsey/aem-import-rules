@@ -11,7 +11,7 @@
  */
 /* global WebImporter */
 
-import {ImportRules} from './rulebuilder';
+import {ImportRules} from './rulebuilder.js';
 
 export type SourceProps = {
   document: Document;

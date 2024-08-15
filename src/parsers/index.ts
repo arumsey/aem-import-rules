@@ -10,12 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import parseMetadata from './metadata';
-import parseColumns from './columns';
-import defaultParser from './block';
-import parseCarousel from './carousel';
-import {SourceProps} from '../transformfactory';
-import {BlockCells} from '../cells';
+import parseMetadata from './metadata.js';
+import parseColumns from './columns.js';
+import defaultParser from './block.js';
+import parseCarousel from './carousel.js';
+import {SourceProps} from '../transformfactory.js';
+import {BlockCells} from '../cells.js';
 
 export type ParserParams<Params = Record<string, unknown>> = SourceProps & { params: Params};
 export type ParserFn<Params = Record<string, unknown>> = (element: Element, params: ParserParams<Params>) => BlockCells

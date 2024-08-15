@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import {ParserFn} from './parsers';
+import {ParserFn} from './parsers/index.js';
 
 export type ImportRules = {
   root?: string;
@@ -28,25 +28,29 @@ export type ImportRules = {
   }>;
 }
 
-export default function ImportRuleBuilder(rules: Partial<ImportRules> = {}): ImportRules {
-  const {
-    root = 'main',
-    cleanup: {
-      start: removeStart = [],
-      end: removeEnd = [],
-    } = {
-      start: [],
-      end: [],
-    },
-    blocks = [],
-  } = rules;
+const ImportRuleBuilder = {
+  build: (rules: Partial<ImportRules> = {}): ImportRules => {
+    const {
+      root = 'main',
+      cleanup: {
+        start: removeStart = [],
+        end: removeEnd = [],
+      } = {
+        start: [],
+        end: [],
+      },
+      blocks = [],
+    } = rules;
 
-  return {
-    root,
-    cleanup: {
-      start: removeStart,
-      end: removeEnd,
-    },
-    blocks
-  };
-}
+    return {
+      root,
+      cleanup: {
+        start: removeStart,
+        end: removeEnd,
+      },
+      blocks
+    };
+  }
+};
+
+export default ImportRuleBuilder;

@@ -3,7 +3,7 @@ import {
   FileUtils,
   Blocks,
 } from '@adobe/helix-importer';
-import {Transformer, CellUtils} from '../src';
+import {Transformer, CellUtils} from '../src/index.js';
 
 export function mochaGlobalSetup() {
   global.WebImporter = {

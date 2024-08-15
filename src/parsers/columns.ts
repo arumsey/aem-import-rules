@@ -10,9 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import blockParser from './block';
-import {ParserFn} from './index';
-import {BlockCellMapping} from '../cells';
+import blockParser from './block.js';
+import {ParserFn} from './index.js';
+import {BlockCellMapping} from '../cells.js';
 
 function getXPath(elm: Element, document: Document, withDetails = false) {
   const allNodes = document.getElementsByTagName('*');
