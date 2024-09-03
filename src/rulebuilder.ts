@@ -12,44 +12,82 @@
 
 import {ParserFn} from './parsers/index.js';
 
+export type BlockRule = {
+  type: string;
+  variants?: string[],
+  selectors?: string[];
+  parse?: ParserFn;
+  params?: Record<string, unknown>;
+  insertMode?: 'replace' | 'append' | 'prepend';
+};
+
 export type ImportRules = {
   root?: string;
   cleanup?: {
     start?: string[];
     end?: string[];
   };
-  blocks: Array<{
-    type: string;
-    variants?: string[],
-    selectors: string[];
-    parse?: ParserFn;
-    params?: Record<string, unknown>;
-    insertMode?: 'replace' | 'append' | 'prepend';
-  }>;
+  blocks: Array<BlockRule>;
 }
 
-const ImportRuleBuilder = {
-  build: (rules: Partial<ImportRules> = {}): ImportRules => {
-    const {
-      root = 'main',
-      cleanup: {
-        start: removeStart = [],
-        end: removeEnd = [],
-      } = {
-        start: [],
-        end: [],
-      },
-      blocks = [],
-    } = rules;
+const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
+  const {
+    root = 'main',
+    cleanup: {
+      start: removeStart = [],
+      end: removeEnd = [],
+    } = {
+      start: [],
+      end: [],
+    },
+    blocks = [],
+  } = rules;
 
-    return {
-      root,
-      cleanup: {
-        start: removeStart,
-        end: removeEnd,
-      },
-      blocks
-    };
+  let importRules: ImportRules = {
+    root,
+    cleanup: {
+      start: removeStart,
+      end: removeEnd,
+    },
+    blocks
+  };
+
+  return {
+    build: (): ImportRules => {
+      return importRules;
+    },
+    setRoot: (root: string) => {
+      importRules = {
+        ...importRules,
+        root
+      };
+    },
+    addCleanup: (selectors: string[], phase: keyof Required<ImportRules>['cleanup'] = 'start') => {
+      const {
+        cleanup: {
+          start: removeStart = [],
+          end: removeEnd = [],
+        } = {
+          start: [],
+          end: [],
+        },
+      } = importRules;
+      importRules = {
+        ...importRules,
+        cleanup: {
+          start: phase === 'start' ? [...removeStart, ...selectors] : removeStart,
+          end: phase === 'end' ? [...removeEnd, ...selectors] : removeEnd,
+        }
+      };
+    },
+    addBlock: (block: BlockRule) => {
+      const {blocks: blockRules = []} = importRules;
+      const filteredBlockRules = blockRules.filter(({type}) => type !== block.type);
+      importRules = {
+        ...importRules,
+        blocks: [...filteredBlockRules, block]
+      };
+    }
   }
 };
 

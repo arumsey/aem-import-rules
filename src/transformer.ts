@@ -118,7 +118,7 @@ export default class Transformer {
         ? selectors.filter(CellUtils.isValidCSSSelector)
         : [];
       const elements = validSelectors.length
-        ? selectors.reduce((acc, selector) => [...acc, ...main.querySelectorAll(selector)], [] as Element[])
+        ? validSelectors.reduce((acc, selector) => [...acc, ...main.querySelectorAll(selector)], [] as Element[])
         : [main];
       // process every element for this block
       elements.forEach((element) => {

@@ -9,5 +9,10 @@ export default [
     rules: {
       'quotes': ['error', 'single'],
       '@typescript-eslint/no-unused-vars': ['error', {'caughtErrors': 'none'}]}
+  },
+  {
+    files: ['test/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off'}
   }
 ];
