@@ -72,11 +72,15 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
           end: [],
         },
       } = importRules;
+
+      const updatedSet = new Set(phase === 'end' ? removeEnd : removeStart);
+      selectors.forEach(selector => updatedSet.add(selector));
+
       importRules = {
         ...importRules,
         cleanup: {
-          start: phase === 'start' ? [...removeStart, ...selectors] : removeStart,
-          end: phase === 'end' ? [...removeEnd, ...selectors] : removeEnd,
+          start: phase === 'start' ? Array.from(updatedSet) : removeStart,
+          end: phase === 'end' ? Array.from(updatedSet) : removeEnd,
         }
       };
     },
