@@ -49,7 +49,7 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
       start: removeStart,
       end: removeEnd,
     },
-    blocks
+    blocks,
   };
 
   return {
@@ -59,7 +59,7 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
     setRoot: (root: string) => {
       importRules = {
         ...importRules,
-        root
+        root,
       };
     },
     addCleanup: (selectors: string[], phase: keyof Required<ImportRules>['cleanup'] = 'start') => {
@@ -81,7 +81,7 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
         cleanup: {
           start: phase === 'start' ? Array.from(updatedSet) : removeStart,
           end: phase === 'end' ? Array.from(updatedSet) : removeEnd,
-        }
+        },
       };
     },
     addBlock: (block: BlockRule) => {
@@ -89,9 +89,12 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
       const filteredBlockRules = blockRules.filter(({type}) => type !== block.type);
       importRules = {
         ...importRules,
-        blocks: [...filteredBlockRules, block]
+        blocks: [...filteredBlockRules, block],
       };
-    }
+    },
+    findBlock: (block: string) => {
+      return importRules.blocks.find(({type}) => type === block);
+    },
   }
 };
 
