@@ -1,7 +1,7 @@
 {
   "name": "aem-import-rules",
   "description": "Library to accelerate your AEM import script development.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "aem",
     "import",
