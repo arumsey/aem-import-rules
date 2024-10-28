@@ -12,6 +12,10 @@
 
 import {ParserFn} from './parsers/index.js';
 
+export type TransformRule = {
+  name: string;
+};
+
 export type BlockRule = {
   type: string;
   variants?: string[],
@@ -28,6 +32,7 @@ export type ImportRules = {
     end?: string[];
   };
   blocks: Array<BlockRule>;
+  transformers?: Array<TransformRule>;
 }
 
 const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
@@ -41,6 +46,7 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
       end: [],
     },
     blocks = [],
+    transformers = [],
   } = rules;
 
   let importRules: ImportRules = {
@@ -50,6 +56,7 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
       end: removeEnd,
     },
     blocks,
+    transformers,
   };
 
   return {
@@ -92,8 +99,19 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
         blocks: [...filteredBlockRules, block],
       };
     },
+    addTransformer: (transform: TransformRule) => {
+      const {transformers: transformRules = []} = importRules;
+      const filteredTransformRules = transformRules.filter(({name}) => name !== transform.name);
+      importRules = {
+        ...importRules,
+        transformers: [...filteredTransformRules, transform],
+      };
+    },
     findBlock: (block: string) => {
       return importRules.blocks.find(({type}) => type === block);
+    },
+    findTransformer: (transformer: string) => {
+      return importRules.transformers?.find(({name}) => name === transformer);
     },
   }
 };
