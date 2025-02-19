@@ -94,9 +94,17 @@ const ImportRuleBuilder = (rules: Partial<ImportRules> = {}) => {
     addBlock: (block: BlockRule) => {
       const {blocks: blockRules = []} = importRules;
       const filteredBlockRules = blockRules.filter(({type}) => type !== block.type);
+      const matchingBlock = blockRules.find(({type}) => type === block.type);
+      const newBlock = {
+        ...matchingBlock,
+        ...block,
+      };
+      // combine the selectors of matching block with new block without duplicates
+      newBlock.selectors = [...new Set([...(matchingBlock?.selectors || []), ...(block?.selectors || [])])];
+      newBlock.variants = [...new Set([...(matchingBlock?.variants || []), ...(block?.variants || [])])];
       importRules = {
         ...importRules,
-        blocks: [...filteredBlockRules, block],
+        blocks: [...filteredBlockRules, newBlock],
       };
     },
     addTransformer: (transform: TransformRule) => {
